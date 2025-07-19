@@ -1,0 +1,62 @@
+npm init
+note-app
+This is simple NodeJs Application
+enter
+enter
+enter
+keywords: node,javascript
+author: Evgeniy Zenchenko <evgeniyzenchenko@gmail.com>
+enter
+enter
+
+npmjs.com->yargs
+npm i yargs
+
+rm -rf node_modules
+
+npm i @types/yargs
+
+Удали текущую версию
+ npm uninstall yargs 
+
+И установи предыдущую 
+npm install yargs@17.2.1 и небудет ругатся на command
+ 
+ node index add --help
+
+ npm i chalk@4.1.2
+
+
+ npm init -y
+Wrote to E:\Result University\!Backend\NodeJs\2\modules\package.json:
+
+{
+  "name": "modules",
+  "version": "1.0.0",
+  "main": "index.js",
+"type":"module",  //чтобы использоваль импорты
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
+
+
+package.json: для запуска без перезагрузки
+ "scripts": {
+     "start": "node index.js",
+    "serve": "nodemon index.js"
+  },
+
+  npm i nodemon -D   еще поставть допом
+
+  npm run serve
+
+  //Express.js
+  //npm install express --save
+
+//Вывод списка элементов. EJS с сервера
+  //npm i ejs
