@@ -15,7 +15,6 @@ document.addEventListener("click", (event) => {
         event.target.closest("li").innerText = update;
       });
     }
-
     // if (update !== "") {
     //   edit(id, update).then(() => {
     //     event.target.closest("li").innerText = update;
