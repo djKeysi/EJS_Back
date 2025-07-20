@@ -1,7 +1,6 @@
 document.addEventListener("click", (event) => {
-  // const id = event.target.dataset.id;
+  const id = event.target.dataset.id;
   if (event.target.dataset.type === "remove") {
-    const id = event.target.dataset.id;
     remove(id).then(() => {
       //  event.target.parentNode.remove();
 
@@ -9,21 +8,59 @@ document.addEventListener("click", (event) => {
     });
   }
   if (event.target.dataset.type === "edit") {
-    const id = event.target.dataset.id;
+    //const id2 = event.target.dataset.id;
     let update = prompt("Введите новое название");
-
     if (update !== "") {
-      edit(id, update).then(() => {
+      editTitle(id, update).then(() => {
         event.target.closest("li").innerText = update;
       });
     }
+
+    // if (update !== "") {
+    //   edit(id, update).then(() => {
+    //     event.target.closest("li").innerText = update;
+    //   });
+    // }
   }
 });
 
 async function remove(id) {
   await fetch(`/${id}`, { method: "DELETE" });
 }
+async function editTitle(id, title) {
+  const response = await fetch(`/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ title }),
+  });
+  if (response.ok) {
+    try {
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-async function edit(id, title) {
-  await fetch(`/${id}`, { method: "PUT", body: JSON.stringify(title) });
+  // catch (error) {
+  //   if (error) {
+  //     console.log(error);
+  //   }
+  // });
+
+  // if (response.ok) {
+  //   console.log("Note updated successfully!");
+  // }
 }
+
+// async function edit( id, title ) {
+//   await fetch(`/${id}`, {
+//     method: "PUT",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(title),
+//   });
+// }

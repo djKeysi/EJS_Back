@@ -33,6 +33,7 @@ app.get("/", async (req, res) => {
   });
 });
 app.post("/", async (req, res) => {
+  //console.log(req.body.title);
   await addNote(req.body.title);
   res.render("index", {
     title: "Express App",
@@ -52,21 +53,16 @@ app.delete("/:id", async (req, res) => {
   });
 });
 app.put("/:id", async (req, res) => {
-  console.log(res.body);
+  // console.log("put", req.params.id);
+  // console.log("put2", req.body.title);
 
-  await editNote(req.params.id, res.body.title);
+  await editNote(req.params.id, req.body.title);
   res.render("index", {
     title: "Express App",
     notes: await getNotes(),
     created: false,
   });
 });
-
-// app.put("/:id", async (req, res) => {
-//   console.log("dfdfdf", req.params.id);
-
-//   await editNote(req.params.id, res.body.title);
-// });
 
 app.listen(port, () => {
   console.log(chalk.green(`Server has been started on port ${port}...`));

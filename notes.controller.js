@@ -48,15 +48,15 @@ async function removeNote(id) {
   console.log(chalk.red(`Note with id="${id}" has beev removed`));
 }
 async function editNote(id, title) {
-  console.log(title);
-  const notes = await getNotes();
-
-  let update = notes.forEach((note) => {
-    if (note.id === id) {
-      return (note.title = title);
-    }
-  });
-  await saveNotes(update);
+  try {
+    const notes = await getNotes();
+    const note = notes.find((note) => note.id == id);
+    note.title = title;
+    // fs.writeFile(notesPath, JSON.stringify(notes));
+    await saveNotes(notes);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 module.exports = {
