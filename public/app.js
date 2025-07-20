@@ -35,14 +35,14 @@ async function editTitle(id, title) {
     },
     body: JSON.stringify({ title }),
   });
-  if (response.ok) {
-    try {
-      const data = await response.json();
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // if (response.ok) {
+  //   try {
+  //     const data = await response.json();
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   // catch (error) {
   //   if (error) {
